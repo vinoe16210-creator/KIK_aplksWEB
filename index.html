@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pet Shop — Kasir &amp; Inventaris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOGIN VIEW ================= -->
+<div id="view-login" class="view active">
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="paw"><img src="paw.jpeg" alt="paw"></span>
+      <h1>GnR PetHouse</h1>
+    </div>
+    <div class="login-sub">Login</div>
+    <div class="login-error" id="login-error">Username &amp; password tidak boleh kosong.</div>
+    <form id="login-form">
+      <div class="field">
+        <label for="login-username">Username or Email</label>
+        <input id="login-username" type="text" placeholder="Enter your username or email" autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password">
+      </div>
+      <div class="row-between">
+        <label class="remember"><input type="checkbox" id="login-remember"> Remember me</label>
+        <button type="button" class="link-btn" id="btn-forgot">Forgot Password?</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MAIN APP VIEW ================= -->
+<div id="view-app" class="view">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="paw">🐾</span>
+      <span>GnR PetHouse</span>
+    </div>
+    <button class="navlink active" data-page="beranda">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+      <span>Beranda</span>
+    </button>
+    <button class="navlink" data-page="kasir">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg>
+      <span>Kasir</span>
+    </button>
+    <button class="navlink" data-page="barang">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+      <span>Barang</span>
+    </button>
+    <div class="sidebar-foot">GnR PetHouse © 2026</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="searchbox">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="global-search" type="text" placeholder="Cari produk, transaksi, atau stok.....">
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" id="bell-btn" title="Notifikasi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="badge-dot" id="bell-dot" style="display:none;"></span>
+        </button>
+        <div class="dropdown" id="bell-dropdown"></div>
+
+        <button class="profile-btn" id="profile-btn">
+          <span class="avatar" id="avatar-initial">O</span>
+          <span id="profile-name">Profile</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown" id="profile-dropdown">
+          <div class="dropdown-item" style="cursor:default;" id="profile-dropdown-name">Owner</div>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-logout" id="btn-logout">Keluar</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ PAGE: BERANDA ============ -->
+    <section class="page active" id="page-beranda">
+      <div class="page-head">
+        <div class="page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          <div>
+            <h1>Beranda</h1>
+            <p class="sub" id="welcome-msg">Welcome Back Owner!</p>
+          </div>
+        </div>
+        <div class="date-chip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span id="date-chip-text">—</span>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-head"><span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg>
+          </span>Penjualan Hari Ini</div>
+          <div class="stat-num" id="stat-penjualan">Rp 0</div>
+          <div class="stat-cap" id="stat-penjualan-cap">Total transaksi 0 transaksi</div>
+        </div>
+        <div class="stat-card warn">
+          <div class="stat-head"><span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/></svg>
+          </span>Stok Barang</div>
+          <div class="stat-num" id="stat-stok">0 <small>item</small></div>
+          <div class="stat-cap">Total seluruh stok produk</div>
+        </div>
+        <div class="stat-card alert">
+          <div class="stat-head"><span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          </span>Stok Berkurang</div>
+          <div class="stat-num" id="stat-low">0 <small>produk</small></div>
+          <div class="stat-cap">perlu segera di-restock</div>
+          <button class="stat-link" id="stat-low-link">Lihat detail ⌄</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <h3>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+              Grafik Penjualan
+            </h3>
+            <span class="chip-select">7 Hari Terakhir</span>
+          </div>
+          <div class="chart-wrap" id="chart-wrap"></div>
+          <div class="chart-note" id="chart-note">📈 Memuat tren penjualan…</div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+              Transaksi Terbaru
+            </h3>
+            <button class="chip-select" id="btn-lihat-semua">Lihat semua ⌄</button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Produk</th><th>Jml</th><th>Total</th><th>Waktu</th></tr></thead>
+              <tbody id="recent-tx-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE: KASIR ============ -->
+    <section class="page" id="page-kasir">
+      <div class="page-head">
+        <div class="page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg>
+          <div><h1>Kasir</h1><p class="sub">Buat transaksi penjualan baru</p></div>
+        </div>
+        <div class="date-chip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span id="date-chip-text-2">—</span>
+        </div>
+      </div>
+
+      <div class="kasir-grid">
+        <div>
+          <div class="toolbar-search" style="max-width:420px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="kasir-search" type="text" placeholder="Cari produk">
+          </div>
+          <div class="cat-tabs" id="kasir-cats"></div>
+          <div class="product-grid" id="kasir-product-grid"></div>
+        </div>
+
+        <div class="card cart-card">
+          <div class="card-head"><h3>🧾 Keranjang</h3><span class="chip-select" id="cart-count-chip">0 item</span></div>
+          <div class="cart-rows" id="cart-rows">
+            <div class="cart-empty">Keranjang masih kosong.<br>Pilih produk untuk mulai transaksi.</div>
+          </div>
+          <div class="cart-summary">
+            <div class="cart-summary-row"><span>Total</span><span id="cart-total">Rp 0</span></div>
+            <div class="pay-methods">
+              <button class="pay-btn" data-method="Tunai">Tunai</button>
+              <button class="pay-btn" data-method="QRIS">QRIS</button>
+              <button class="pay-btn" data-method="Debit">Debit</button>
+            </div>
+            <button class="btn-checkout" id="btn-checkout" disabled>Cetak Struk</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAGE: BARANG ============ -->
+    <section class="page" id="page-barang">
+      <div class="page-head">
+        <div class="page-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          <div><h1>Barang / Inventaris</h1><p class="sub" id="barang-last-updated">Last Updated: —</p></div>
+        </div>
+      </div>
+
+      <div class="barang-toolbar">
+        <div class="toolbar-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="barang-search" type="text" placeholder="Cari barang, SKU...">
+        </div>
+        <select class="select-chip" id="barang-filter-kategori">
+          <option value="">Semua Kategori</option>
+          <option value="Makanan">Makanan</option>
+          <option value="Mainan">Mainan</option>
+          <option value="Aksesoris">Aksesoris</option>
+          <option value="Perawatan">Perawatan</option>
+        </select>
+        <select class="select-chip" id="barang-filter-status">
+          <option value="">Semua Status</option>
+          <option value="Aman">Stok Aman</option>
+          <option value="Menipis">Stok Menipis</option>
+          <option value="Habis">Stok Habis</option>
+        </select>
+        <button class="btn-marigold" id="btn-tambah-barang">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Tambah Barang Baru
+        </button>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Foto</th><th>Nama Barang</th><th>SKU / Kode</th><th>Kategori</th><th>Harga Modal</th><th>Harga Jual</th><th>Jumlah Stok</th><th>Status Stok</th><th>Aksi</th></tr>
+            </thead>
+            <tbody id="barang-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= MODAL: TAMBAH / EDIT BARANG ================= -->
+<div class="modal-overlay" id="modal-barang">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modal-barang-title">Tambah Barang Baru</h3>
+      <button class="modal-close" data-close="modal-barang">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="form-barang">
+        <input type="hidden" id="fb-id">
+        <div class="form-grid">
+          <div class="field-sm full">
+            <label>Nama Barang</label>
+            <input type="text" id="fb-nama" required placeholder="cth. Royal Canin Fit 32 1kg">
+          </div>
+          <div class="field-sm">
+            <label>SKU / Kode</label>
+            <input type="text" id="fb-sku" required placeholder="cth. RCFT32">
+          </div>
+          <div class="field-sm">
+            <label>Kategori</label>
+            <select id="fb-kategori">
+              <option>Makanan</option><option>Mainan</option><option>Aksesoris</option><option>Perawatan</option>
+            </select>
+          </div>
+          <div class="field-sm">
+            <label>Harga Modal (Rp)</label>
+            <input type="number" min="0" id="fb-modal" required placeholder="0">
+          </div>
+          <div class="field-sm">
+            <label>Harga Jual (Rp)</label>
+            <input type="number" min="0" id="fb-jual" required placeholder="0">
+          </div>
+          <div class="field-sm full">
+            <label>Jumlah Stok</label>
+            <input type="number" min="0" id="fb-stok" required placeholder="0">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" data-close="modal-barang">Batal</button>
+      <button class="btn-solid" id="btn-simpan-barang">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL: RESTOCK ================= -->
+<div class="modal-overlay" id="modal-restock">
+  <div class="modal-box" style="max-width:360px;">
+    <div class="modal-head"><h3>Restock Barang</h3><button class="modal-close" data-close="modal-restock">✕</button></div>
+    <div class="modal-body">
+      <p style="margin-top:0; font-size:13.5px; color:var(--ink-soft);" id="restock-info"></p>
+      <input type="hidden" id="rs-id">
+      <div class="field-sm">
+        <label>Tambah Stok Sebanyak</label>
+        <input type="number" min="1" id="rs-jumlah" placeholder="cth. 20">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" data-close="modal-restock">Batal</button>
+      <button class="btn-solid" id="btn-simpan-restock">Tambah Stok</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL: STRUK ================= -->
+<div class="modal-overlay" id="modal-struk">
+  <div class="modal-box" style="max-width:380px;">
+    <div class="modal-head"><h3>Struk Transaksi</h3><button class="modal-close" data-close="modal-struk">✕</button></div>
+    <div class="modal-body">
+      <div class="receipt" id="receipt-content"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-ghost" data-close="modal-struk">Tutup</button>
+      <button class="btn-solid" id="btn-print-struk">🖨️ Cetak</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
